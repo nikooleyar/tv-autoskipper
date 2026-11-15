@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tv-autoskipper"
+version = "0.1.0"
+description = "Skips YouTube ads on a TV as soon as the skip button appears"
+requires-python = ">=3.11"
+dependencies = ["pyytlounge>=3.6,<4"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+tv-autoskipper = "tv_autoskipper.__main__:main"
+
+[tool.setuptools]
+packages = ["tv_autoskipper"]
