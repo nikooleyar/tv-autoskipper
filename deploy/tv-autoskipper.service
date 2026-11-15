@@ -1,0 +1,16 @@
+[Unit]
+Description=Skip YouTube ads on the TV
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+# Runs as its own unprivileged user; systemd creates /var/lib/tv-autoskipper for it.
+User=tvskip
+StateDirectory=tv-autoskipper
+ExecStart=/opt/tv-autoskipper/.venv/bin/tv-autoskipper --auth-file /var/lib/tv-autoskipper/auth.json run
+Restart=always
+RestartSec=10
+MemoryMax=100M
+
+[Install]
+WantedBy=multi-user.target
